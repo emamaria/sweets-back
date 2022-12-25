@@ -19,7 +19,7 @@ const { generateJWT } = require('../helpers/jwt')
         if(user){
             return res.status(400).json({
                 ok: false,
-                msg: 'the user already exists'
+                msg: 'the email already exists'
             })
         }
 
@@ -53,17 +53,53 @@ const { generateJWT } = require('../helpers/jwt')
 }
 
 
-const loginUser =  (req, res) => {
-
-   
+const loginUser =  async(req, res) => {
 
     const {password, email} = req.body;
 
     console.log(password, email)
-    return res.json({
+
+    try {
+
+        const userDB = await User.findOne({email:email})
+
+        if(!userDB){
+            return res.status(400).json({
+                ok: false,
+                msg: 'this email doesnt exist'
+            })
+        }
+
+     const validPassword = bcrypt.compareSync(password, userDB.password)
+
+     if(!validPassword){
+        return res.status(400).json({
+            ok: false,
+            msg: 'this password isnt correct'
+        })
+     }
+
+
+     const token = await generateJWT(userDB.id, userDB.name)
+
+     return res.json({
         ok: true,
-        msg: 'user login'
-    })
+        id: userDB.id,
+        email: email,
+        name: userDB.name,
+        token: token
+     })
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: true,
+            msg: 'call the admin'
+        })
+    }
+
+    
+ 
 }
 
 const tokenUser =  (req, res) => {
