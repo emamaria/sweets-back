@@ -1,6 +1,20 @@
 const { response } = require('express') 
+const { validationResult } = require('express-validator')
  
  const registerUser = (req, res = response) => {
+
+    const errors = validationResult(req)
+
+    if(!errors.isEmpty()){
+        //al no cumplir el requisito el campo mando un mensaje de error que viene dentro 
+        //del objeto error
+       return res.status(400).json({
+        ok:false,
+        errors: errors.mapped()
+       })
+    }
+
+
   
     console.log(req.body)
 
@@ -17,6 +31,20 @@ const { response } = require('express')
 
 const loginUser =  (req, res) => {
 
+    //si algun campo no cumple con el requisito, se almacena el error aqui
+    //capto los errores procedenters de los middlewares check
+    const errors = validationResult(req)
+
+    //si dentro de errors hay algo, no esta vacío es que hay un error en la validacion
+    if(!errors.isEmpty()){
+        //al no cumplir el requisito el campo mando un mensaje de error que viene dentro 
+        //del objeto error
+       return res.status(400).json({
+        ok:false,
+        errors: errors.mapped()
+       })
+    }
+    console.log(errors)
 
     const {password, email} = req.body;
 
