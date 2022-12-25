@@ -1,8 +1,11 @@
 const express = require('express')
 const cors = require('cors')
+const { dbConnect } = require('./db/db')
 require('dotenv').config()
 
 const app = express()
+
+dbConnect()
 
 app.use(express.static('public'))
 //hago peticion de cualquier dominio
