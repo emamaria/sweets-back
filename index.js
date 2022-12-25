@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
 //hago peticion de cualquier dominio
@@ -9,8 +10,8 @@ app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
 
-app.listen( 4000, () => {
-    console.log(`server running on port ${4000}`)
+app.listen( process.env.PORT, () => {
+    console.log(`server running on port ${process.env.PORT}`)
 })
 
 
