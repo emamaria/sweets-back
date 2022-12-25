@@ -1,33 +1,16 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { registerUser, loginUser, tokenUser } = require('../controllers/auth');
 
 
 const router = Router();
 
-router.post('/register', (req, res) => {
-
-    return res.json({
-        ok: true,
-        msg: 'user register'
-    })
-})
+router.post('/register', registerUser)
 
 
-router.post('/login', (req, res) => {
-
-    return res.json({
-        ok: true,
-        msg: 'user login'
-    })
-})
+router.post('/login', loginUser) 
 
 //mando el token por el header y contrasto la firma
-router.get('/token', (req, res) => {
-
-    return res.json({
-        ok: true,
-        msg: 'token'
-    })
-})
+router.get('/token', tokenUser)
 
 
 
