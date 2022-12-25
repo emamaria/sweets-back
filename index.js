@@ -3,6 +3,8 @@ const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
+
+app.use(express.static('public'))
 //hago peticion de cualquier dominio
 app.use(cors())
 
