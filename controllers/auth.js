@@ -102,11 +102,20 @@ const loginUser =  async(req, res) => {
  
 }
 
-const tokenUser =  (req, res) => {
+const tokenUser =  async(req, res) => {
+ 
+    const {id, name} = req;
 
+    const token = await generateJWT(id, name)
+   
     return res.json({
         ok: true,
-        msg: 'token'
+        id: id,
+        name: name,
+        token: token,
+        msg: 'ok token',
+        
+    
     })
 }
 

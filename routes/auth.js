@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { registerUser, loginUser, tokenUser } = require('../controllers/auth');
 const { validateFields } = require('../middlewares/fields-validation');
+const { validateJWT } = require('../middlewares/jwt-validation');
 
 
 const router = Router();
@@ -19,7 +20,7 @@ router.post('/login',[
 ], validateFields ,loginUser) 
 
 //mando el token por el header y contrasto la firma
-router.get('/token', tokenUser)
+router.get('/token',validateJWT, tokenUser)
 
 
 
