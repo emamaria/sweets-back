@@ -49,4 +49,4 @@ const OrderSchema = Schema({
 })
 
 
-module.exports = model('Order', UserSchema)
+module.exports = model('Order', OrderSchema)
