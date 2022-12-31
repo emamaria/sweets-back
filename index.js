@@ -14,6 +14,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/order', require('./routes/order'))
 
 app.listen( process.env.PORT, () => {
     console.log(`server running on port ${process.env.PORT}`)
