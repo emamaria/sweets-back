@@ -36,6 +36,7 @@ const OrderSchema = Schema({
          type: Boolean,
          required: true,
          trim: true,
+         default: true
         },
     transactionId: {
         type: String,
