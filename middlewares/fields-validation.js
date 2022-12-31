@@ -12,7 +12,7 @@ const  validateFields = (req, res = response, next) => {
         errors: errors.mapped()
        })
     }
-
+    
     next()
 }
 
