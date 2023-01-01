@@ -121,7 +121,7 @@ const tokenUser =  async(req, res) => {
         email: email,
         token: token,
         msg: 'ok token',
-        user: user
+        
       
         
     
