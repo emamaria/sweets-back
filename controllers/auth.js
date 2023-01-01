@@ -109,8 +109,9 @@ const tokenUser =  async(req, res) => {
 
     const token = await generateJWT(id, name)
 
-    const user = await User.findOne({id: id})
+    const user = await User.findById(id);
 
+        
     const email = user.email
 
     return res.json({
@@ -120,6 +121,8 @@ const tokenUser =  async(req, res) => {
         email: email,
         token: token,
         msg: 'ok token',
+        user: user
+      
         
     
     })
