@@ -33,6 +33,7 @@ const postOrder = async (req, res) => {
         const orderDB = await order.save();
         return res.status(201).json(orderDB);
     } catch (error){
+        console.log(error)
         return res.json({
          ok: false,
          msg: "Cannot post order"
