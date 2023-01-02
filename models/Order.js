@@ -17,7 +17,7 @@ const OrderSchema = Schema({
         trim: true
     }, 
     orderItems: {
-        type: Array,
+        type: [],
         required: true,
         trim: true 
     },

@@ -39,7 +39,7 @@ const checkOut = async (req, res) => {
         if(payment.status === "succeeded"){
             console.log(req.body)
             const order = new Order({
-            OrderItems: cartItems ,
+            orderItems: cartItems,
             userId:  userData._id, 
             name:  userData.name, 
             email: userData.email , 
@@ -54,6 +54,8 @@ const checkOut = async (req, res) => {
             })
     
              order.save();
+
+             console.log("mi ultimo order", order.OrderItems)
            
             res.send('Payment done') 
         } else{
