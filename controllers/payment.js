@@ -18,19 +18,18 @@ const checkOut = async (req, res) => {
      
         console.log(JSON.stringify(token))
           console.log(userData);
+          console.log("cartItems", cartItems)
        const customer = await stripe.customers.create({
 
             email : token.email,
             source: token.id
         })
         
-       console.log("Customer: "+JSON.stringify(customer));
-       console.log("Token: "+JSON.stringify(token));
-       console.log("Subtotal: "+subtotal);
+     
 
 
         const payment = await stripe.charges.create({
-            amount: totalPrice,
+            amount: totalPrice*100,
             currency: "EUR",
             customer: customer.id,
             receipt_email: token.email 
