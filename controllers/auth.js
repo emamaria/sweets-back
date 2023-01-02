@@ -75,7 +75,7 @@ const loginUser =  async(req, res) => {
      if(!validPassword){
         return res.status(400).json({
             ok: false,
-            msg: 'this password isnt correct'
+            msg: 'this password isnt correct for this user'
         })
      }
 

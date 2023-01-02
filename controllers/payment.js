@@ -55,7 +55,7 @@ const checkOut = async (req, res) => {
     
              order.save();
 
-             console.log("mi ultimo order", order.OrderItems)
+            //  console.log("mi ultimo order", order.OrderItems)
            
             res.send('Payment done') 
         } else{
