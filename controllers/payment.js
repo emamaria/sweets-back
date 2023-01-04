@@ -25,11 +25,11 @@ const checkOut = async (req, res) => {
             source: token.id
         })
         
-     
+       console.log("total price", totalPrice)
 
 
         const payment = await stripe.charges.create({
-            amount: totalPrice*100,
+            amount: parseInt(totalPrice*100),
             currency: "EUR",
             customer: customer.id,
             receipt_email: token.email 
