@@ -40,6 +40,9 @@ app.use((req, res, next) => {
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/order', require('./routes/order'))
 app.use('/api/checkout', require('./routes/payment'))
+app.use('/api/drink', require('./routes/drink'))
+app.use('/api/sweet', require('./routes/sweet'))
+
 
 app.listen( process.env.PORT, () => {
     console.log(`server running on port ${process.env.PORT}`)
