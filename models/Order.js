@@ -31,11 +31,11 @@ const OrderSchema = Schema({
         required: true, 
         trim: true
     },
-    orderDelivered: {
-         type: Boolean,
+    orderStatus: {
+         type: String,
          required: true,
          trim: true,
-         default: true
+         default: "Accepted"
         },
     transactionId: {
         type: String,
