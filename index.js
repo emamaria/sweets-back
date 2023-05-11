@@ -18,17 +18,12 @@ app.use((req, res, next) => {
     next();
   });
   
+
+
+
   app.use(
-    cors({
-      origin: ["https://sweets-frontal.vercel.app/"],
-      credentials: true,
-    })
+    cors()
   );
-
-
-  // app.use(
-  //   cors()
-  // );
   
   
   app.use(express.json({ limit: "5mb" }));
